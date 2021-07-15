@@ -29,4 +29,50 @@
         echo 'Ausgabe einer "Variablen"';
         echo "<br>";
         echo "Ausgabe einer \"Variablen\" ";
+
+        // Konkatenationsoperator
+        for($i = 0; $i < 11; $i++) {
+            echo "<img alt='$i' src='Bild". $i .".png' />";  
+        }
+
+        // Stringfunktionen
+
+            // trim
+            $entcryptMessage = " &You won 1 Bitcoin %";
+            $entcryptMessage = trim($entcryptMessage, " &");
+            $entcryptMessage = rtrim($entcryptMessage, "%");
+            echo $entcryptMessage;
+
+            // substr
+            $snippet = "This, bring, hi, I am, green, blue, your father";
+
+            $snippet_1 = substr($snippet, -30, 4);
+            $snippet_2 = substr($snippet, -11, 11);
+            $starWarsQuote = $snippet_1 . " " . $snippet_2;
+            echo $starWarsQuote;
+
+            // strpos
+            $url = "http://example.com/foo?bar";
+            $findQuery = "?bar";
+            $index = strpos($url, $findQuery);
+
+            if ($index === false) {
+                echo "Der String '$findQuery' wurde nicht im String '$url' gefunden";
+            } else {
+                echo "Der String '$findQuery' wurde im String '$url' gefunden";
+                echo " und befindet sich an Position $index";
+            }
+
+            // strstr
+            $url = "http://example.com/foo?bar";
+            $findQuery = "?bar";
+            $index = strstr($url, $findQuery);
+
+            echo $index;
+
+
+
+
+
+
 ?>
