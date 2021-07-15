@@ -6,7 +6,17 @@ echo $string_2;
 $string_1 = "is SAFE!";
 echo $string_2;
 
-// Double $$
+// Variable Variablen
+$git = 'branch';
+$branch = 'git_add';
+$git_add = 'git_commit_m';
+$git_commit_m = 'git_push';
+echo "<br>";
+echo $$git;
+echo "<br>";
+echo $$$git;
+echo "<br>";
+echo $$$$git;
 
 
 ?>
