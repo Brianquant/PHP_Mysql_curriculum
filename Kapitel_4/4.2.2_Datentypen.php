@@ -70,6 +70,22 @@
 
             echo $index;
 
+            // str_replace()
+            $entcryptMessage = "Yo%u wo=n 1 Bitc4oin";
+            $entcryptMessage = str_replace('%', '', $entcryptMessage);
+            $entcryptMessage = str_replace('=', '', $entcryptMessage);
+            $entcryptMessage = str_replace('4', '', $entcryptMessage);
+
+            echo $entcryptMessage;
+
+            // str_replace() with an array
+            $strings = array(4, 'string', 'string', 5);
+
+            $strings = str_replace(4, 'string', $strings);
+            $strings = str_replace(5, 'string', $strings);
+
+            print_r($strings);
+
 
 
 
