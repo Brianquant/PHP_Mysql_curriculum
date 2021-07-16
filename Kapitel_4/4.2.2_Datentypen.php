@@ -79,12 +79,43 @@
             echo $entcryptMessage;
 
             // str_replace() with an array
-            $strings = array(4, 'string', 'string', 5);
+            $entcryptMessage = "Yo%u wo=n 1 Bitc4oin";
+            $decrypt_process = array("%", "=", "4");
+            $replace = '';
+            $decrypt_message = str_replace($decrypt_process,  $replace, $entcryptMessage);
+            echo $decrypt_message;
 
-            $strings = str_replace(4, 'string', $strings);
-            $strings = str_replace(5, 'string', $strings);
+            // Inkrementierung
+            $Germany = 0;
+            $klose = true;
+            $Brasilien = 0;
+            $neymar = false;
+            if($klose === true) {
+                for($i = 0; $i < 7; $i++) {
+                    $Germany++;
+                }
+            } else {
+                $Brasilien++;
+            }
+            echo "Germany:" . $Germany;
+            echo "<br>";
+            echo "Brasilien:" . $Brasilien;
 
-            print_r($strings);
+            // Rundungen von Zahlen
+            $taxes = 10.45643;
+            $customer = "ceil";
+
+            if($customer === "floor") {
+                $taxes = floor($taxes); 
+            } elseif ($customer === "ceil") {
+                $taxes = ceil($taxes);
+            } else {
+                $taxes = round($taxes);
+            }
+
+            echo "The Customer wants her/his taxes in a" . " " . $customer . " " . "way" . " " . "taxes:" . "$" . $taxes;
+
+            
 
 
 
