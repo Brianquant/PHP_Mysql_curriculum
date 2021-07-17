@@ -115,6 +115,44 @@
 
             echo "The Customer wants her/his taxes in a" . " " . $customer . " " . "way" . " " . "taxes:" . "$" . $taxes;
 
+            // "==" vs. "==="
+            $integer = 10;
+            $string = "10";
+            var_dump($integer == $string); 
+            var_dump($integer === $string);
+
+            // Boolesche Wahrheitswert
+                // Das logische Und
+                $tipp_1 = true;
+                $tipp_2 = false;
+                if($tipp_1 === true && $tipp_2 === true) {
+                    echo "Sie haben die Wette verloren";
+                }
+                else {
+                    echo "Sie haben die Wette gewonnen";
+                }
+                // Das logische Oder
+                $landstraße_hoechstgeschwindigkeit = 100;
+                $innerOrt = 50;
+                $currentSpeed = 60;
+                if($currentSpeed === 100 || $currentSpeed > 80) {
+                    echo "Ihre Geschwindigkeit ist angemessen";
+    
+                } elseif($currentSpeed < 80 || $currentSpeed > 100) {
+                    echo "Sie behindern den Verkher";
+                }
+                // Das logische exlusive Oder
+                $tipp_1 = false;
+                $tipp_2 = false;
+
+                if($tipp_1 xor $tipp_2) {
+                    echo "Ein Tipp von 2 gewonnen";
+                } else {
+                    echo "Gar kein Tipp gewonnen";
+                }
+
+
+
             
 
 
