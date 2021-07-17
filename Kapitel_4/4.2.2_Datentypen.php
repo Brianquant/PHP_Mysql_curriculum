@@ -150,6 +150,8 @@
                 } else {
                     echo "Gar kein Tipp gewonnen";
                 }
+                // Das logische Nicht
+                
 
 
 
