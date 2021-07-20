@@ -132,8 +132,7 @@
                     echo "Sie haben die Wette gewonnen";
                 }
                 // Das logische Oder
-                $landstraße_hoechstgeschwindigkeit = 100;
-                $innerOrt = 50;
+                    // Landstraße 100 km/h
                 $currentSpeed = 60;
                 if($currentSpeed === 100 || $currentSpeed > 80) {
                     echo "Ihre Geschwindigkeit ist angemessen";
@@ -151,6 +150,16 @@
                     echo "Gar kein Tipp gewonnen";
                 }
                 // Das logische Nicht
+                    //  grenzwert = 3;
+                        $zurzeitgePegelStand = 5.09;
+
+                        if($zurzeitgePegelStand !== 3 && $zurzeitgePegelStand > 3) {
+                            echo "Veralssen Sie die Überschwemmungszone!";
+    
+                        } elseif($zurzeitgePegelStand === 2.5 || $zurzeitgePegelStand < 3) {
+                            echo "Es besteht noch keine akute Gefahr";
+                        }
+
                 
 
 
