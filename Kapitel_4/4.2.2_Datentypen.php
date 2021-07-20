@@ -151,14 +151,45 @@
                 }
                 // Das logische Nicht
                     //  grenzwert = 3;
-                        $zurzeitgePegelStand = 5.09;
+                        $zurzeitgerPegelStand = 5.09;
 
-                        if($zurzeitgePegelStand !== 3 && $zurzeitgePegelStand > 3) {
+                        if($zurzeitgePegerlStand !== 3 && $zurzeitgerPegelStand > 3) {
                             echo "Veralssen Sie die Überschwemmungszone!";
     
-                        } elseif($zurzeitgePegelStand === 2.5 || $zurzeitgePegelStand < 3) {
+                        } elseif($zurzeitgePegerlStand === 2.5 || $zurzeitgePegerlStand < 3) {
                             echo "Es besteht noch keine akute Gefahr";
                         }
+                
+                // Arrays
+                        // Einen weiteren Wert hinzufügen
+                        $ducks = array('duck 1: off', 'duck 2: active', 'duck 3: off', 'duck 4: active');
+                        $ducks[4] = 'duck 5: active';
+                        print_r($ducks);
+                        // Alternative Schreibweise
+                        $ducks = ['duck 1: off', 'duck 2: active', 'duck 3: off', 'duck 4: active'];
+                        $ducks[4] = 'duck 5: active';
+                        print_r($ducks);
+                        // Operator =>
+                        $ducks = ['duck 1:' => 'off', 'duck 2:' => 'active', 'duck 3:' => 'active', 'duck 4:' => 'off', ];
+                        // print_r() = Das _r steht für Rekursiv (zurückkehrend)
+                        print_r($ducks);
+                        // Array Methoden
+                        $covidVarianten = array('B.1.617.2' => 'delta', 'B.1.1.7'  => 'alpha', 'B.1.351' =>  'beta', 'P.1' => 'gamma');
+
+                        // Alphabetisch
+                        sort($covidVarianten);
+                        // Assoziative Schlüssel und Werte
+                        asort($covidVarianten);
+                        // Ordnet nach den Schlüssel (key)
+                        ksort($covidVarianten);
+                        // Umgekehrter Reihenfolge
+                        rsort($covidVarianten);
+
+                        print_r($covidVarianten);
+
+                        
+                        
+
 
                 
 
