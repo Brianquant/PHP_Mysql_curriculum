@@ -197,6 +197,56 @@
                             echo "All ducks are online";
                         }
 
+                        // array_key_exist() 
+                        $ducks = ['mama duck:' => 'active', 'duck 1:' => 'off', 'duck 2:' => 'active', 'duck 3:' => 'active', 'duck 4:' => 'actives', ];
+
+                        $mamaDuck = array_key_exists('mama duck:', $ducks);
+
+                        if($mamaDuck) {
+                            echo "Mama duck is online";
+                        } else {
+                            echo "Mama duck is offline";
+                        }
+                        // array_keys()
+                        $ducks = ['mama duck:' => 'active', 'duck 1:' => 'off', 'duck 2:' => 'active', 'duck 3:' => 'active', 'duck 4:' => 'actives', ];
+
+                        $locatedDucks = array_keys($ducks);
+                        // isset()
+                        var_dump(isset($locatedDucks));
+                        print_r($locatedDucks);
+                        
+                        // Array Zeiger
+
+                        $ducks = ['mama duck:', 'duck 1:', 'duck 2:', 'duck 3:', 'duck 4:'];
+
+                        $mode = current($ducks);
+                        $mode = next($ducks);
+                        $mode = prev($ducks);
+                        $mode = end($ducks);
+                        $mode = reset($ducks);
+
+                        print_r($mode);
+
+                        // Array Methoden array_push() & array_pop
+                        $ducks = ['mama duck:' => 'active', 'duck 1:' => 'off', 'duck 2:' => 'active', 'duck 3:' => 'active', 'duck 4:' => 'off'];
+
+                        if(in_array('off', $ducks)) {
+                            array_pop($ducks);
+                            array_push($ducks, 'duck 4:', 'active');
+                        }
+
+                            print_r($ducks);
+                        
+                        // Der Wert Null
+                        $initDuck = null;
+
+                        if(is_null($initDuck)) {
+                            echo "Wert gleich Null";
+                        } else {
+                            echo "Duck ist aktiv";
+                        }
+
+
                         
                         
 
