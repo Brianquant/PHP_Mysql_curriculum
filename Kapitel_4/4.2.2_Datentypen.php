@@ -187,6 +187,16 @@
 
                         print_r($covidVarianten);
 
+                        // in_array & array_search 
+                        $ducks = ['duck 1:' => 'off', 'duck 2:' => 'active', 'duck 3:' => 'active', 'duck 4:' => 'actives', ];
+                        $offDucks = array_search('off', $ducks);
+
+                        if(in_array('off', $ducks) && $offDucks) {
+                            echo "Some ducks are offline: $offDucks";
+                        } else {
+                            echo "All ducks are online";
+                        }
+
                         
                         
 
