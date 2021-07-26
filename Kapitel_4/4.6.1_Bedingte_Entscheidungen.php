@@ -93,25 +93,8 @@ $mamaDuck = 90;
      echo "Battery is low";
  }
 
-    // while-Schleifen
-
-    $countdown = 10;
-    $currentTime = 0;
-    while($countdown >= 0) {
-        $currentTime = $countdown;
-        $countdown--;
-        echo $currentTime;
-        echo "<br />";
-
-    }
-
-    // do-Schleifen
-
-    $spartacus = "bring the system down";
-    do {
-        echo $spartacus;
-        echo "<br />";
-    } while (strlen($spartacus) >= 0);
+    
+    
 
 
 
