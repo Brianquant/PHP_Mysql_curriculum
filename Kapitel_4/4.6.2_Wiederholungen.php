@@ -31,6 +31,16 @@ for($i = 0; $i < count($ducks); ++$i) {
 
 print_r($ducks);
 
+// foreach-Schleife
+
+$ducks = array('duck 1' => 'on', 'duck 2' => 'off');
+
+foreach($ducks as $key => $value) {
+    echo "Device:" . $key;
+    echo "<br />";
+    echo "State:" . $value;
+    echo "<br />";
+}
 
 
 // Rekursiv
