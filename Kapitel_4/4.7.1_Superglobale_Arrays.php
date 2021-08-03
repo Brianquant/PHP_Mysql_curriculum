@@ -171,7 +171,57 @@ echo "<br/>";
 echo $_SESSION["number"];
 print_r($_SESSION);
  ?>
-<!-- Array: $_SESSION END -->
+
+
+ <?php
+
+ /**
+  * 0: PHP_SESSION_DISABLED;
+  * 1: PHP_SESSION_NONE;
+  * 2: PHP_SESSION_ACTIVE;
+  */
+
+ session_start();
+
+ if(session_status() == PHP_SESSION_ACTIVE) {
+     $_SESSION['kundennummer'] = 17245;
+ } else {
+     echo "Keine session vorhanden";
+ }
+ 
+ echo session_status();
+  ?>
+<!-- Umgebungsvariablen  -->
+<?php phpinfo(); ?>
+<!-- Array: $_SESSION END --> 
+
+<!-- Array: $_SERVER START -->
+<?php
+echo $_SERVER['SERVER_NAME'];
+echo "<br/>";
+echo $_SERVER['DOCUMENT_ROOT'];
+echo "<br/>";
+echo $_SERVER['PHP_SELF'];
+echo "<br/>";
+echo $_SERVER['HTTP_USER_AGENT'];
+echo "<br/>";
+echo $_SERVER['HTTP_REFERER']; 
+?>
+<!-- Array: $_SERVER END -->
+
+<!-- Array: $_GLOBALS START -->
+<?php 
+$duck = "active";
+
+function accessDuck()
+ {
+    echo $GLOBALS["duck"] = "off";
+ }
+
+ accessDuck()
+?>
+
+<!-- Array: $_GLOBALS END -->
 
 
  
