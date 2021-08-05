@@ -35,7 +35,7 @@ class Fahrzeug {
 //   get_class() Funktion; Gibt die Klasse wieder mit Boolischen Wert
   echo get_class($on);
   echo "<br/>";
-// instanceof prueft ob die Instanz zu der Klasse zugewisen wurde
+// instanceof prueft ob die Instanz zu der Klasse zugewiesen wurde
   echo ($on instanceof Fahrzeug)?'ja':'nein';
   echo "<br/>";
 // class_exists prueft ob die Klasse vorhanden ist. Gibt einen Boolischen Wert wieder.
