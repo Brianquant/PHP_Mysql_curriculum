@@ -1,5 +1,6 @@
 <?php 
 
+// Klasse Fahrzeug Iteration 1
 
 class Fahrzeug
 {

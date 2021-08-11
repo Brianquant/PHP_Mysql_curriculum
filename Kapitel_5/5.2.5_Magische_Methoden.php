@@ -25,7 +25,7 @@ function __toString() {
 function __set_state() {
     // Export des Objekts über var_export()
 }
-function __autoload() {
+function __autoload($x) {
     // Erstellen eines Objekts einer unbekannten Klasse
 }
 function __clone() {
@@ -57,8 +57,8 @@ $array = serialize(array('version' => 2, 'datum' => '2008-11-09'));
 $unserialize = unserialize($array);
 var_dump($unserialize);
 
-// Klasse Fahrzeug erweitert
-class Fahrzeug
+// Klasse Fahrzeug Iteration 2
+class Fahrzeug2
 {
   // Attribute
   public $gestartet = false;
@@ -97,6 +97,57 @@ class Fahrzeug
   }
 
 }
+
+// Klasse Fahrzeug Iteration 3
+
+class Fahrzeug3
+{
+  // Attribute
+  public $gestartet = false;
+  protected $aktuelleGeschwindigkeit = 0;
+  private $hoechstGeschwindigkeit = 0;
+
+  // Konstruktor
+  function __construct($maxV = 180)
+  {
+    $this->hoechstGeschwindigkeit = $maxV;
+  }
+  // Serialize 
+  public function __sleep() {
+    return array('gestartet', 'hoechstGeschwindigkeit');
+  }
+  // Unserialize
+  public function __wakeup()
+  {
+    $this->aktuelleGeschwindigkeit = 0;
+  }
+
+  public function __invoke($kmh)
+  {
+    echo "Das Fahrzeug hat eine Geschwindigkeit von ";
+    echo $this->aktuelleGeschwindigkeit = $kmh;
+
+  }
+  
+  public function starteMotor() {
+    $this->gestartet = true;
+  }
+  public function stoppeMotor() {
+    $this->gestartet = false;
+  }
+  public function beschleunigen($neuV) {
+    if($this->gestartet) {
+      if($neuV <= $this->hoechstGeschwindigkeit) {
+        $this->aktuelleGeschwindigkeit = $neuV;
+      } else {
+        $this->aktuelleGeschwindigkeit = $this->hoechstGeschwindigkeit;
+      }
+    }
+  }
+}
+
+$kfz = new Fahrzeug;
+$kfz(150);
 
 
 
