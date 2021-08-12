@@ -64,12 +64,12 @@ class Fahrzeug2
   public $gestartet = false;
   protected $aktuelleGeschwindigkeit = 0;
   private $hoechstGeschwindigkeit = 0;
-
   // Konstruktor
   function __construct($maxV = 180)
   {
     $this->hoechstGeschwindigkeit = $maxV;
   }
+
   // Serialize 
   public function __sleep() {
     return array('gestartet', 'hoechstGeschwindigkeit');
@@ -149,6 +149,87 @@ class Fahrzeug3
 $kfz = new Fahrzeug;
 $kfz(150);
 
+
+
+// Klasse Fahrzeug Iteration 4
+
+class Fahrzeug4
+{
+  // Attribute
+  public $gestartet = false;
+  protected $aktuelleGeschwindigkeit = 0;
+  private $hoechstGeschwindigkeit = 0;
+
+  // Konstruktor
+  function __construct($maxV = 180)
+  {
+    echo "Das Fahrzeug hat eine Hoechstgeschwindigkeit von ";
+    echo $this->hoechstGeschwindigkeit = $maxV;
+    echo "<br/>";
+  }
+
+  // New Feature __set_state()
+  public static function __set_state($array)
+  {
+    $f = new Fahrzeug($array['hoechstGeschwindigkeit']);
+    $f->gestartet=$array['gestartet'];
+    $f->aktuelleGeschwindigkeit = $array['aktuelleGeschwindigkeit'];
+    var_export($f);
+  }
+
+  
+  public function __toString()
+ {
+  echo "Eine Hoechstgeschwindigkeit (toString) ";
+  return $this->hoechstGeschwindigkeit;
+ }
+  // Serialize 
+  public function __sleep() {
+    return array('gestartet', 'hoechstGeschwindigkeit');
+  }
+  // Unserialize
+  public function __wakeup()
+  {
+    $this->aktuelleGeschwindigkeit = 0;
+  }
+
+  public function __invoke($kmh)
+  {
+    echo "Das Fahrzeug hat eine Geschwindigkeit von ";
+    echo $this->aktuelleGeschwindigkeit = $kmh;
+    echo "<br/>";
+
+  }
+  
+  public function starteMotor() {
+    echo "Motor ist gestartet: ";
+    echo $this->gestartet = true;
+    echo "<br/>";
+  }
+  public function stoppeMotor() {
+    $this->gestartet = false;
+  }
+  public function beschleunigen($neuV) {
+    if($this->gestartet) {
+      if($neuV <= $this->hoechstGeschwindigkeit) {
+        echo "Beschleunigung Aktuelle Geschwindigkeit: ";
+        echo $this->aktuelleGeschwindigkeit = $neuV;
+        echo "<br/>";
+      } else {
+        echo "Beschleunigung Aktuelle Hoechstgeschwindigkeit: ";
+        $this->aktuelleGeschwindigkeit = $this->hoechstGeschwindigkeit;
+        echo "<br/>";
+      }
+    }
+  }
+  public function bremse($neuV) {
+    if($neuV <= $this->aktuelleGeschwindigkeit){
+      echo $this->aktuelleGeschwindigkeit = $neuV;
+    } else {
+      echo $this->aktuelleGeschwindigkeit = $this->aktuelleGeschwindigkeit;
+    }
+  }
+}
 
 
 
