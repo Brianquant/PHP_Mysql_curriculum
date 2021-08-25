@@ -99,8 +99,6 @@ class ABS extends Fahrzeug {
 }
 
 
-
-
 class LKW extends Fahrzeug {
 
   public $statusLadeKlappe = false;
@@ -124,7 +122,6 @@ class LKW extends Fahrzeug {
     ABS::aktivieren($neuV);
     parent::bremse($neuV);
     ABS::deaktivieren($neuV);
-
   }
 
 }
@@ -135,6 +132,52 @@ $lkw->starteMotor();
 echo($lkw->gestartet)?'an':'aus';
 echo "<br>";
 $lkw->beschleunigen(100);
+
+// parent:: Gueltigkeitsbereichoperator
+class smartPhone {
+
+  function installOs($os) {
+    if($os === "linux") {
+      return "Install linux on an apple device";
+      return "<br/>";
+    } 
+    return;
+  }
+
+  function getInternet($internet) {
+    if($internet >= 40) {
+      return "Download mbps ist sehr gut";
+    } else {
+      return "Download mbps ist sehr niedrig";
+    }
+    
+  }
+}
+
+$phone1 = new smartPhone;
+$phone1->installOs('linux');
+$phone1->getInternet(45);
+
+
+
+class iphone extends smartPhone {
+  function installOs($os)
+  {
+    echo parent::installOs($os);
+  }
+  function getInternet($internet)
+  {
+    echo parent::getInternet($internet);
+  }
+}
+
+
+
+$iphone1 = new iphone;
+
+$iphone1->installOs("lunix");
+$iphone1->getInternet(30);
+
 
 
 ?>
