@@ -171,12 +171,57 @@ class iphone extends smartPhone {
   }
 }
 
-
-
 $iphone1 = new iphone;
 
 $iphone1->installOs("lunix");
 $iphone1->getInternet(30);
+
+// Abstrakte Klassen und Metthoden
+
+// Example 1 START
+abstract class Elternklasse {
+  abstract public function abstrElternMethoden();
+
+  public function implElternMethode() {
+    echo 'implementierte Methode';
+    echo "<br/>";
+  }
+}
+
+class Kindklasse extends Elternklasse {
+
+  public function abstrElternMethoden() {
+    echo 'Implementierung einer abstrakten Methode';
+    echo "<br/>";
+  }
+}
+
+$kind = new Kindklasse();
+$kind->abstrElternMethoden();
+$kind->implElternMethode();
+// Example 1 END
+
+// Example 2 START
+abstract class Os {
+  abstract public function installLinux($vm);
+  
+}
+
+class VM extends Os {
+  public function installLinux($vm)
+  {
+    if($vm === "Linux Virtual Machine") {
+        echo "Nice Choice";
+    } else {
+      echo "Bad Choice";
+    }
+  }
+}
+
+$os = new VM();
+$os->installLinux("Linux Virtual Machine");
+
+// Example 2 END
 
 
 
