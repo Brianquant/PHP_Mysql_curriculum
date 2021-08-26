@@ -223,6 +223,26 @@ $os->installLinux("Linux Virtual Machine");
 
 // Example 2 END
 
+// Interface and implements
+
+interface Scheibenwischer {
+  public function einschalten();
+  public function ausschalten();
+}
+
+class LKW extends Fahrzeug implements Scheibenwischer {
+  function einschalten()
+  {
+    echo "Eingeschaltet";
+  }
+
+  function ausschalten()
+  {
+    echo "ausgeschaltet";
+  }
+
+}
+
 
 
 ?>
