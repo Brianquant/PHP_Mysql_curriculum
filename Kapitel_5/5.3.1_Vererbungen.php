@@ -224,24 +224,176 @@ $os->installLinux("Linux Virtual Machine");
 // Example 2 END
 
 // Interface and implements
+// Iteration 6 
 
 interface Scheibenwischer {
-  public function einschalten();
-  public function ausschalten();
+  public function einschalten($param);
+  public function ausschalten($param);
 }
+ 
 
 class LKW extends Fahrzeug implements Scheibenwischer {
-  function einschalten()
+
+  public $statusLadeKlappe = false;
+  public $zuladung;
+
+  function __construct($zuladung, $maxV = 100)
   {
-    echo "Eingeschaltet";
+    $this->zuladung = $zuladung;
+    parent::__construct($maxV);
   }
 
-  function ausschalten()
+  function senkeLadeklappe() {
+    $this->statusLadeKlappe = false;
+  }
+
+  function hebeLadeklappe() {
+    $this->statusLadeKlappe = true;
+  }
+
+  public function bremse($neuV) {
+    ABS::aktivieren($neuV);
+    parent::bremse($neuV);
+    ABS::deaktivieren($neuV);
+  }
+
+  public function einschalten($liters)
   {
-    echo "ausgeschaltet";
+    if($liters > 2) {
+      echo "Scheibenwischer an";
+    }
+    return;
+  }
+
+  public function ausschalten($liters)
+  {
+    if($liters < 2) {
+      echo "Scheibenwischer aus";
+    }
   }
 
 }
+
+$lkw = new LKW(500);
+$lkw->einschalten(1);
+$lkw->ausschalten(1);
+
+// Traits
+// Hilfskonstruktoren insteadof oder as. Verhindern Kollisionen unter Namen
+// Iteration 7
+trait Scheibenwischer {
+  public function einschalten() { echo "Scheibenwischer an"; }
+  public function ausschalten() { echo "Scheibenwischer aus"; }
+}
+
+trait Klimaanlage {
+  public function einschalten() { echo "Klimma an"; }
+  public function ausschalten() { echo "Klimma aus"; }
+}
+ 
+
+class LKW extends Fahrzeug {
+
+  use Scheibenwischer, ABS, Klimaanlage {
+    Scheibenwischer::einschalten insteadof Klimaanlage;
+    Klimaanlage::einschalten as KlimaEinschalten;
+    Scheibenwischer::ausschalten insteadof Klimaanlage;
+    Klimaanlage::ausschalten as KlimaAusschalten;
+  }
+
+
+
+  public $statusLadeKlappe = false;
+  public $zuladung;
+
+  function __construct($zuladung, $maxV = 100)
+  {
+    $this->zuladung = $zuladung;
+    parent::__construct($maxV);
+    
+  }
+
+  function senkeLadeklappe() {
+    $this->statusLadeKlappe = false;
+  }
+
+  function hebeLadeklappe() {
+    $this->statusLadeKlappe = true;
+  }
+
+  public function bremse($neuV) {
+    $this->aktivieren();
+    parent::bremse($neuV);
+    $this->deaktivieren();
+  }
+
+  
+}
+
+$lkw = new LKW(500);
+$lkw->einschalten();
+echo "<br>";
+$lkw->ausschalten();
+echo "<br>";
+$lkw->ausschalten();
+echo "<br>";
+$lkw->bremse(100);
+echo "<br>";
+$lkw->KlimaEinschalten();
+echo "<br>";
+$lkw->KlimaAusschalten();
+
+// Traits gruppieren: Ausschließen, umbennen, Sichtbarkeit einstellen
+// Use case: Viele vereinzelte Traits sorgen für Unübersichtlichkeit, das bündeln sorgt für eine gut Methodenlandschaft
+// Iteration 8
+
+trait Hilfsysteme {
+  use Scheibenwischer, Klimaanlage,ABS {
+    Scheibenwischer::einschalten insteadof Klimaanlage;
+    Klimaanlage::einschalten as KlimaEinschalten;
+    Scheibenwischer::ausschalten insteadof Klimaanlage;
+    Klimaanlage::ausschalten as KlimaAusschalten;
+    ABS::aktivieren as private;
+    ABS::deaktivieren as private ABS_aus;
+  }
+
+  public abstract function meldeAusfall();
+  
+}
+ 
+
+class LKW extends Fahrzeug {
+
+use Hilfsysteme;
+
+  public $statusLadeKlappe = false;
+  public $zuladung;
+
+  function __construct($zuladung, $maxV = 100)
+  {
+    $this->zuladung = $zuladung;
+    parent::__construct($maxV);
+    
+  }
+
+  function senkeLadeklappe() {
+    $this->statusLadeKlappe = false;
+  }
+
+  function hebeLadeklappe() {
+    $this->statusLadeKlappe = true;
+  }
+
+  public function bremse($neuV) {
+    $this->aktivieren();
+    parent::bremse($neuV);
+    $this->deaktivieren();
+  }
+
+
+  
+}
+
 
 
 
