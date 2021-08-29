@@ -464,7 +464,7 @@ final class LKW extends Fahrzeug {
   echo Bus::$cameras; // Access Atrribute
   echo "<br/>";
   
-  Bus::closeDoors(1);
+  Bus::closeDoors(1); // Acces Methods
   echo "<br/>";
 
 
