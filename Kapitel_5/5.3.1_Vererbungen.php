@@ -390,9 +390,82 @@ use Hilfsysteme;
     $this->deaktivieren();
   }
 
+  public function meldeAusfall() {
+    echo "Achtung all Systeme sind ausgefallen";
+  }
 
-  
 }
+
+
+// Iteration 9
+// Keyword final
+final class LKW extends Fahrzeug {
+
+  use Hilfsysteme;
+  
+    public $statusLadeKlappe = false;
+    public $zuladung;
+  
+    function __construct($zuladung, $maxV = 100)
+    {
+      $this->zuladung = $zuladung;
+      parent::__construct($maxV);
+      
+    }
+  
+    function senkeLadeklappe() {
+      $this->statusLadeKlappe = false;
+    }
+  
+    function hebeLadeklappe() {
+      $this->statusLadeKlappe = true;
+    }
+  
+    public function bremse($neuV) {
+      $this->aktivieren();
+      parent::bremse($neuV);
+      $this->deaktivieren();
+    }
+  
+    public function meldeAusfall() {
+      echo "Achtung all Systeme sind ausgefallen";
+    }
+  
+  }
+
+  // Keyword static
+  
+  class Bus extends Fahrzeug {
+  
+    use Hilfsysteme;
+  
+    public static $cameras = "on";
+    public static $wheels = 6;
+    private $sensors;
+  
+    public static function closeDoors($sensors) {
+      if($sensors === 0) {
+        echo "Close doors";
+      } else {
+        echo "Doors are still open";
+      }
+    }
+  
+    public function meldeAusfall()
+    {
+      echo "Alle Systeme sind ausgefallen";
+    }
+  
+  }
+  
+  
+  echo "<br/>";
+  echo "Cameras:";
+  echo Bus::$cameras; // Access Atrribute
+  echo "<br/>";
+  
+  Bus::closeDoors(1);
+  echo "<br/>";
 
 
 
