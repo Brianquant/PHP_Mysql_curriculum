@@ -1,5 +1,13 @@
 <?php 
 
+/**
+ * Überladungen
+ * - Alle Überladungsmethoden müssen als public definiert sein.
+ * - Keiner der Parameter dieser magischen Methoden kann als Referenz übergeben werden.
+ * - Anwendungsfall 1: Zugriff auf nicht sichtbare Methoden oder Attribute oder 
+ * - Anwendungsfall 2: Erstellung von nicht deklarierten Attribute oder Methoden
+ */
+
 // Iteration 10
 
 // Klassenattribute überladen __get(), __set(), __isset(), __unset()
