@@ -434,6 +434,8 @@ final class LKW extends Fahrzeug {
   }
 
   // Keyword static
+  // static ermöglicht es Funktionen bzw. Methoden die sich in einer Klasse befinden
+  //  ohne Aufruf eines Objektes aufgerufen zu werden.
   
   class Bus extends Fahrzeug {
   
