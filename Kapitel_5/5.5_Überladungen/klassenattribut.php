@@ -127,6 +127,7 @@ $kfz = new Fahrzeug();
 $kfz->$_POST['name'] = $_POST['wert'];
 $kfz->__isset($attr);
 $kfz->__unset($attr);
+
 ?>
 
 <!-- Example 2 -->
@@ -160,6 +161,29 @@ $obj->item1 = "Overloaded item 1";
 $obj->item2 = "Overloaded item 2";
 echo $obj->item1 . "<br>";
 echo $obj->item2 . "<br>";
+
+  class MethodOverload {
+    // Calling a normal function
+    public function __call($name, $arguments)
+    {
+      echo "Calling object method '$name' "
+      . implode(', ', $arguments). "\n" . "<br>";  
+    }
+
+    //   Calling a static function
+   public static function __callStatic($name, $arguments)
+    {
+      echo "Calling static method '$name' "
+      . implode(', ', $arguments). "\n";
+    }
+}
+
+$objMethod = new MethodOverload;
+$objMethod->runTest1();
+$objMethod->runTest2();
+
+MethodOverload::runtTest3() . "<br>";
+MethodOverload::runtTest4();
 
 
 
