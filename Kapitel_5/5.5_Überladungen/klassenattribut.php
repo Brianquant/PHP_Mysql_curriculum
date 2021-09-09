@@ -2,7 +2,9 @@
 
 /**
  * Überladungen
- * - Alle Überladungsmethoden müssen als public definiert sein.
+ * - Overloading in PHP provides means to dynamically create properties and methods. 
+ *   These dynamic entities are processed via magic methods one can establish in a class for various action types.
+ * 
  * - Keiner der Parameter dieser magischen Methoden kann als Referenz übergeben werden.
  * - Anwendungsfall 1: Zugriff auf nicht sichtbare Methoden oder Attribute oder 
  * - Anwendungsfall 2: Erstellung von nicht deklarierten Attribute oder Methoden
@@ -125,4 +127,40 @@ $kfz = new Fahrzeug();
 $kfz->$_POST['name'] = $_POST['wert'];
 $kfz->__isset($attr);
 $kfz->__unset($attr);
+?>
+
+<!-- Example 2 -->
+
+<?php 
+
+class PropertyOverload
+{
+    /**  Location for overloaded data.  */
+    private $data = array();
+
+    public function __set($name, $value)
+    {
+        $this->data[$name] = $value;
+    }
+   public function __get($name)
+    {
+    return $this->data[$name];
+    }
+    public function __isset($name)
+    {
+        return isset($this->data[$name]);
+    }
+    public function __unset($name)
+    {
+        unset($this->data[$name]);
+    }
+}
+$obj = new PropertyOverload;
+$obj->item1 = "Overloaded item 1";
+$obj->item2 = "Overloaded item 2";
+echo $obj->item1 . "<br>";
+echo $obj->item2 . "<br>";
+
+
+
 ?>
