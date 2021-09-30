@@ -4,7 +4,7 @@
 - Flexiblität (Formate wie Texte, Bilder und Videos aufnehmen)
 - Sicherheit (Zugriffsrechte)
 - Stablität (Belastbare System im Hintergrund müssen laufen)
-- Geschwindigkeit bringen Abfragen, Katalogisieren indiss
+- Geschwindigkeit bringen Abfragen, Katalogisieren indiZieren
 
 ### Algemeine Begriffe
 - **CSV** (Comma-Seperated-Values)
