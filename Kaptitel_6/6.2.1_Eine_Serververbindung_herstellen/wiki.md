@@ -32,6 +32,8 @@ C:\xampp\mysql\bin
 
 ### 3 Möglichkeiten sich mit den Server zu verbinden
 
+## Windows
+
 1. Benutzer und Passwort werden sofort übergeben. Nachteil: PW wird eingeblendet
 
 ```bash
@@ -47,6 +49,16 @@ mysql -ubeispiel_user -p
 
 ```bash
 mysql --h=mysql.server.de -u= phpmyadmin_user -p
+```
+
+## Mac
+Startet den Server
+```bash
+mysql.server start
+```
+Verbindet Terminal mit mysql Server
+```bash
+mysql -u root -p
 ```
 
 ## Ergebniss
